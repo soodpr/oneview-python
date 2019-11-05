@@ -1,6 +1,6 @@
-[![PyPI version](https://badge.fury.io/py/hpOneView.svg)](https://badge.fury.io/py/hpOneView)
-[![Build Status](https://travis-ci.org/HewlettPackard/python-hpOneView.svg?branch=master)](https://travis-ci.org/HewlettPackard/python-hpOneView)
-[![Coverage Status](https://coveralls.io/repos/github/HewlettPackard/python-hpOneView/badge.svg)](https://coveralls.io/github/HewlettPackard/python-hpOneView)
+[![PyPI version](https://badge.fury.io/py/hpeOneView.svg)](https://badge.fury.io/py/hpeOneView)
+[![Build Status](https://travis-ci.org/HewlettPackard/oneview-python.svg?branch=master)](https://travis-ci.org/HewlettPackard/oneview-python)
+[![Coverage Status](https://coveralls.io/repos/github/HewlettPackard/oneview-python/badge.svg)](https://coveralls.io/github/HewlettPackard/oneview-python)
 
 # HPE OneView SDK for Python
 
@@ -22,8 +22,8 @@ methods described below.
 Either:
 
 ```bash
-$ git clone https://github.com/HewlettPackard/python-hpOneView.git
-$ cd python-hpOneView
+$ git clone https://github.com/HewlettPackard/oneview-python.git
+$ cd oneview-python
 $ python setup.py install --user  # to install in the user directory (~/.local)
 $ sudo python setup.py install    # to install globally
 ```
@@ -31,8 +31,8 @@ $ sudo python setup.py install    # to install globally
 Or if using PIP:
 
 ```bash
-$ git clone https://github.com/HewlettPackard/python-hpOneView.git
-$ cd python-hpOneView
+$ git clone https://github.com/HewlettPackard/oneview-python.git
+$ cd oneview-python
 $ pip install .
 ```
 
@@ -41,18 +41,18 @@ Both installation methods work if you are using virtualenv, which you should be!
 ### From Pypi
 
 ```bash
-$ pip install hpOneView
+$ pip install hpeOneView
 ```
 
 
 ## API Implementation
 
-A status of the HPE OneView REST interfaces that have been implemented in this Python library can be found in the [Wiki section](https://github.com/HewlettPackard/python-hpOneView/blob/master/endpoints-support.md).
+A status of the HPE OneView REST interfaces that have been implemented in this Python library can be found in the [Wiki section](https://github.com/HewlettPackard/oneview-python/blob/master/endpoints-support.md).
 
 
 ## SDK Documentation
 
-The latest version of the SDK documentation can be found in the [SDK Documentation section](https://hewlettpackard.github.io/python-hpOneView/index.html).
+The latest version of the SDK documentation can be found in the [SDK Documentation section](https://hewlettpackard.github.io/oneview-python/index.html).
 
 ## Logging
 
@@ -175,7 +175,7 @@ config = {
         "userName": "Administrator",
         "password": "secret123"
     },
-    "ssl_certificate": "/home/python-hpOneView/my_ov_certificate.crt"
+    "ssl_certificate": "/home/oneview-python/my_ov_certificate.crt"
 }
 ```
 
@@ -286,13 +286,6 @@ For compatibility purposes, the Exception args property is defined with the erro
 except Exception as e:
 	print(arg[0]) # e.msg equivalent
     print(arg[1]) # e.oneview_reponse equivalent
-```
-
-:warning: The Exception Handling was modified on 2016-09-12. So, <u>before</u> this [commit](https://github.com/HewlettPackard/python-hpOneView/commit/37bd76894f8975fa3f78834b61e1eff10dc592e6), the behavior was:
-
-```python
-except HPOneViewException as e:
-    print(e.msg) # has the entire JSON result from OneView, or the error message.
 ```
 
 ## Contributing and feature requests

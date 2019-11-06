@@ -41,7 +41,7 @@ Both installation methods work if you are using virtualenv, which you should be!
 ### From Pypi
 
 ```bash
-$ pip install hpeOneView
+$ pip install hpOneView
 ```
 
 
@@ -273,7 +273,8 @@ All exceptions raised by the OneView Python SDK inherit from HPOneViewException.
 
 ```python
 try:
-    fc_network = oneview_client.fc_networks.get(id)
+    fc_network_client = oneview_client.fc_networks
+    fc_network = fc_network_client.get_by_name(name)
 except HPOneViewException as e:
     print(e.msg)
     if e.oneview_response:

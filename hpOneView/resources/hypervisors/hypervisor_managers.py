@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,41 +19,35 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
-
 from future import standard_library
 
 standard_library.install_aliases()
 
 
-from hpOneView.resources.resource import Resource, ResourcePatchMixin
+from hpOneView.resources.resource import Resource
 
 
-class LogicalInterconnectGroups(ResourcePatchMixin, Resource):
+class HypervisorManagers(Resource):
     """
-    Logical Interconnect Groups API client.
+    Hypervisor Managers API client.
 
     """
-    URI = '/rest/logical-interconnect-groups'
+    URI = '/rest/hypervisor-managers'
 
     DEFAULT_VALUES = {
-        '200': {"type": "logical-interconnect-groupV3"},
-        '300': {"type": "logical-interconnect-groupV300"},
-        '500': {"type": "logical-interconnect-groupV300"},
-        '600': {"type": "logical-interconnect-groupV4"},
-        '800': {"type": "logical-interconnect-groupV5"},
-        '1000': {"type": "logical-interconnect-groupV6"},
-        '1200': {"type": "logical-interconnect-groupV7"},
-        '1400': {"type": "logical-interconnect-groupV8"},
-        '1600': {"type": "logical-interconnect-groupV8"}
+        '800': {"type": "HypervisorManagerV2"},
+        '1000': {"type": "HypervisorManagerV2"},
+        '1200': {"type": "HypervisorManagerV2"},
+        '1600': {"type": "HypervisorManagerV2"}
     }
 
     def __init__(self, connection, data=None):
-        super(LogicalInterconnectGroups, self).__init__(connection, data)
+        super(HypervisorManagers, self).__init__(connection, data)
 
-    def get_all(self, start=0, count=-1, filter='', sort='', scope_uris=''):
+    def get_all(self, start=0, count=-1, filter='', sort='', query='', scope_uris=''):
         """
-        Gets a list of logical interconnect groups based on optional sorting and filtering and is constrained by start
-        and count parameters.
+        Gets a list of Hypervisor Managers based on optional sorting and filtering, and constrained by start and count
+        parameters.
 
         Args:
             start:
@@ -69,31 +63,14 @@ class LogicalInterconnectGroups(ResourcePatchMixin, Resource):
             sort:
                 The sort order of the returned data set. By default, the sort order is based
                 on create time with the oldest entry first.
+            query:
+                 A general query string to narrow the list of resources returned. The default
+                 is no query - all resources are returned.
             scope_uris:
                 An expression to restrict the resources returned according to the scopes to
                 which they are assigned.
 
         Returns:
-            list: A list of logical interconnect groups.
+             list: List of Hypervisor Managers
         """
-        return self._helper.get_all(start, count, filter=filter, sort=sort, scope_uris=scope_uris)
-
-    def get_default_settings(self):
-        """
-        Gets the default interconnect settings for a logical interconnect group.
-
-        Returns:
-            dict: Interconnect Settings.
-        """
-        uri = self.URI + "/defaultSettings"
-        return self._helper.do_get(uri)
-
-    def get_settings(self):
-        """
-        Gets the interconnect settings for a logical interconnect group.
-
-        Returns:
-            dict: Interconnect Settings.
-        """
-        uri = "{}/settings".format(self.data["uri"])
-        return self._helper.do_get(uri)
+        return self._helper.get_all(start, count, filter=filter, sort=sort, query=query, scope_uris=scope_uris)

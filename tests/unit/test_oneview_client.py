@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ###
-# (C) Copyright [2019] Hewlett Packard Enterprise Development LP
+# (C) Copyright [2020] Hewlett Packard Enterprise Development LP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -79,6 +79,9 @@ from hpOneView.resources.settings.appliance_time_and_locale_configuration import
 from hpOneView.resources.settings.versions import Versions
 from tests.test_utils import mock_builtin
 from hpOneView.resources.settings.licenses import Licenses
+from hpOneView.resources.hypervisors.hypervisor_managers import HypervisorManagers
+from hpOneView.resources.security.certificates_server import CertificatesServer
+from hpOneView.resources.hypervisors.hypervisor_cluster_profiles import HypervisorClusterProfiles
 
 OS_ENVIRON_CONFIG_MINIMAL = {
     'ONEVIEWSDK_IP': '172.16.100.199',
@@ -922,3 +925,24 @@ class OneViewClientTest(unittest.TestCase):
     def test_lazy_loading_appliance_version_information(self):
         versions = self._oneview.versions
         self.assertEqual(versions, self._oneview.versions)
+
+    def test_hypervisor_managers_has_right_type(self):
+        self.assertIsInstance(self._oneview.hypervisor_managers, HypervisorManagers)
+
+    def test_lazy_loading_hypervisor_managers(self):
+        hypervisor_managers = self._oneview.hypervisor_managers
+        self.assertNotEqual(hypervisor_managers, self._oneview.hypervisor_managers)
+
+    def test_certificates_server_has_right_type(self):
+        self.assertIsInstance(self._oneview.certificates_server, CertificatesServer)
+
+    def test_certificates_server_client(self):
+        certificates_server = self._oneview.certificates_server
+        self.assertNotEqual(certificates_server, self._oneview.certificates_server)
+
+    def test_hypervisor_cluster_profiles_has_right_type(self):
+        self.assertIsInstance(self._oneview.hypervisor_cluster_profiles, HypervisorClusterProfiles)
+
+    def test_hypervisor_cluster_profiles_client(self):
+        HypervisorClusterProfiles = self._oneview.hypervisor_cluster_profiles
+        self.assertNotEqual(HypervisorClusterProfiles, self._oneview.hypervisor_cluster_profiles)

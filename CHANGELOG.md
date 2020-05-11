@@ -1,3 +1,32 @@
+# 5.2.0 (unreleased)
+#### Notes
+Extends support of the SDK to OneView REST API version 1600 (OneView v5.20).
+
+#### Features supported with the current release
+- Certificates Server
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+- Interconnects
+- Interconnect Types
+- Logical Interconnects
+- Logical Interconnect Groups
+- Server Hardware
+- Server Hardware Types
+
+# 5.1.1
+
+#### Bug fixes & Enhancements
+- #34 Handle exception of get_by_aliasname method in certificates_server resource and return resource object
+
+# 5.1.0
+#### Notes
+Extends support of the SDK to OneView REST API version 800, 1000 and 1200.
+
+#### Features supported
+- Certificates Server
+- Hypervisor Cluster Profiles
+- Hypervisor Managers
+
 # 5.0.0
 #### Notes
 Extends support of the SDK to OneView REST API version 1200 (OneView v5.00).
